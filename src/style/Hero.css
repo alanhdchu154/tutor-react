@@ -111,6 +111,21 @@
     transform: translateY(-2px);
 }
 
+.hero-btn-ghost {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 13px 24px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.hero-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
 .hero-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

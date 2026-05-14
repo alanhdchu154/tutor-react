@@ -19,6 +19,7 @@ function Hero() {
             ],
             ctaSchool: "For Schools & Recruiters",
             ctaParent: "For Students & Families",
+            ctaResume: "Download Resume (PDF)",
             availability: "Available for Shanghai international school roles · July – August 2026"
         },
         zh: {
@@ -34,6 +35,7 @@ function Hero() {
             ],
             ctaSchool: "学校 / 招聘合作",
             ctaParent: "学生 / 家长咨询",
+            ctaResume: "下载简历 (PDF)",
             availability: "可入职上海国际学校  ·  2026 年 7-8 月"
         }
     };
@@ -55,6 +57,19 @@ function Hero() {
                 <div className="hero-cta">
                     <a href="#services" className="hero-btn hero-btn-primary">{c.ctaSchool}</a>
                     <a href="#programs" className="hero-btn hero-btn-outline">{c.ctaParent}</a>
+                    <a href="/Alan_Hwader_Chu_Resume.pdf"
+                       className="hero-btn hero-btn-ghost"
+                       download="Alan_Hwader_Chu_Resume.pdf"
+                       target="_blank" rel="noopener noreferrer">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                             style={{ marginRight: 8, verticalAlign: '-2px' }}>
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        {c.ctaResume}
+                    </a>
                 </div>
 
                 <div className="hero-stats">

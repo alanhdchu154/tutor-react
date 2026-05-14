@@ -1,0 +1,124 @@
+.insights-section {
+    padding: 90px 0;
+    background: #fff;
+}
+
+.insights-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 56px;
+}
+
+.insights-label {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: #1F3A5F;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+
+.insights-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+}
+
+.insights-intro {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.insight-card {
+    background: #FAFBFC;
+    border: 1px solid #E5E8EC;
+    border-radius: 10px;
+    padding: 28px 26px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.insight-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(31, 58, 95, 0.12);
+    border-color: #1F3A5F;
+    background: #fff;
+}
+
+.insight-meta {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: #777;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+
+.insight-category {
+    color: #1F3A5F;
+    font-weight: 700;
+}
+
+.insight-dot {
+    margin: 0 6px;
+    color: #BBB;
+}
+
+.insight-date,
+.insight-read {
+    font-weight: 500;
+}
+
+.insight-title-card {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 14px;
+    line-height: 1.4;
+    flex-grow: 0;
+}
+
+.insight-excerpt {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 16px;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.insight-read-link {
+    color: #1F3A5F;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+@media (max-width: 900px) {
+    .insights-section {
+        padding: 60px 0;
+    }
+    .insights-title {
+        font-size: 1.6rem;
+    }
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1199px) {
+    .insights-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

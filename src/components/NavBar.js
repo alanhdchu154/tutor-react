@@ -13,12 +13,12 @@ function Navbar() {
 
     const navData = {
         en: {
-            items: ['Home', 'For Schools', 'About', 'Programs', 'Students', 'Contact'],
-            ids:   ['home', 'services',   'about', 'programs', 'academic-highlights', 'contact']
+            items: ['Home', 'For Schools', 'About', 'Journey', 'Insights', 'Programs', 'Contact'],
+            ids:   ['home', 'services',   'about', 'timeline','insights', 'programs', 'contact']
         },
         zh: {
-            items: ['主页', '学校合作', '关于我', '项目', '学生', '联系'],
-            ids:   ['home', 'services', 'about', 'programs', 'academic-highlights', 'contact']
+            items: ['主页', '学校合作', '关于我', '轨迹', '观察', '项目', '联系'],
+            ids:   ['home', 'services', 'about', 'timeline', 'insights', 'programs', 'contact']
         }
     };
 
