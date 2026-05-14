@@ -1,0 +1,129 @@
+.services-section {
+    padding: 90px 0;
+    background: #FAFBFC;
+}
+
+.services-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 56px;
+}
+
+.services-label {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: #1F3A5F;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+
+.services-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+}
+
+.services-intro {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-bottom: 48px;
+}
+
+.service-card {
+    background: #fff;
+    border: 1px solid #E5E8EC;
+    border-radius: 10px;
+    padding: 32px 28px;
+    text-align: left;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #1F3A5F;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.service-card:hover {
+    border-color: #1F3A5F;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(31, 58, 95, 0.12);
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+.service-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #1F3A5F;
+    background: rgba(31, 58, 95, 0.08);
+    padding: 5px 12px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+}
+
+.service-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 14px;
+    line-height: 1.35;
+}
+
+.service-desc {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #555;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.services-fit {
+    background: #1F3A5F;
+    color: #fff;
+    padding: 24px 32px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    letter-spacing: 0.3px;
+}
+
+@media (max-width: 768px) {
+    .services-section {
+        padding: 60px 0;
+    }
+    .services-title {
+        font-size: 1.7rem;
+    }
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .service-card {
+        padding: 24px 22px;
+    }
+}

@@ -1,125 +1,149 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../App';
 import { Modal, Button } from 'react-bootstrap';
+import '../style/Programs.css';
 
 function Courses() {
     const { language } = useLanguage();
     const [showModal, setShowModal] = useState(false);
-    const [selectedCourse, setSelectedCourse] = useState(null);
+    const [selected, setSelected] = useState(null);
 
     const content = {
         en: {
-            title: "My Courses",
-            courses: [
+            sectionLabel: "FOR STUDENTS & FAMILIES",
+            title: "Programs & 1-on-1 Tutoring",
+            intro: "Tailored to international curriculum students preparing for top US and UK universities. All programs run in a personalized 1-on-1 or small-group format.",
+            programs: [
                 {
-                    name: "A-Level Mathematics",
-                    description: "Explore advanced mathematics concepts including calculus and algebra in a personalized 1-on-1 setting.",
-                    details: "This course covers advanced topics in calculus, algebra, and geometry, focusing on problem-solving techniques and real-world applications. Delivered in a personalized 1-on-1 format to suit individual learning needs."
+                    name: "Student Research Mentorship",
+                    badge: "FLAGSHIP",
+                    description: "End-to-end research project guidance — topic selection, literature review, methodology, writing, and submission. Outputs usable for US high school / undergraduate admissions.",
+                    details: "I built the “four-to-one” model at Shanghai Genius Academy (research advisor + literature mentor + academic writing coach + writing tutor). Now offered as a personalized 6-12 month program. Past students have produced research portfolios used in admissions to US/UK top universities."
                 },
                 {
-                    name: "A-Level Computer Science",
-                    description: "Learn programming fundamentals and computational thinking through personalized 1-on-1 sessions.",
-                    details: "This course teaches the basics of computer science, including programming in Python, data structures, and computational thinking. All sessions are 1-on-1, ensuring personalized attention and instruction."
+                    name: "College Counseling — US / UK Path",
+                    badge: "ADMISSIONS",
+                    description: "Course selection, transcript strategy, extracurricular planning, and application materials — anchored in real US graduate-school experience.",
+                    details: "Strategic counseling drawing on my own experience at Purdue and UT Austin, plus 10+ years coaching international curriculum students. Helps students with course load planning, GPA strategy, US/UK application essays, and interview prep."
                 },
                 {
-                    name: "A-Level Physics",
-                    description: "Understand the fundamental principles of physics and their applications with 1-on-1 guidance.",
-                    details: "This course covers mechanics, electromagnetism, thermodynamics, and modern physics concepts, with practical applications and experiments. Offered as 1-on-1 sessions for focused learning."
+                    name: "A-Level / IGCSE / AP Physics",
+                    badge: "STEM",
+                    description: "Advanced physics tutoring rooted in real research experience — not just exam tricks. Cambridge CAIE 9702 certified.",
+                    details: "Covers mechanics, electromagnetism, thermodynamics, modern physics. Built on my Materials Engineering and Physics-track research background at Purdue. I focus on conceptual depth, not memorization."
                 },
                 {
-                    name: "Python Programming",
-                    description: "Introduction to programming using Python, offered in a personalized 1-on-1 format.",
-                    details: "Learn the basics of Python programming, covering syntax, variables, loops, functions, and data structures. Suitable for beginners and delivered through 1-on-1 sessions for personalized learning."
+                    name: "A-Level / IGCSE / AP Mathematics",
+                    badge: "STEM",
+                    description: "Core and Further Math up through calculus, with focus on building intuition before procedures.",
+                    details: "Calculus, algebra, geometry, statistics, with emphasis on problem-solving and real-world applications. Personalized 1-on-1 format identifies and patches each student's specific gaps."
                 },
                 {
-                    name: "Research Paper Writing",
-                    description: "Develop skills for writing academic research papers with 1-on-1 expert guidance.",
-                    details: "This course focuses on the structure, style, and components of academic research papers, including thesis development, argumentation, and citation methods. Personalized 1-on-1 sessions provide tailored instruction."
+                    name: "Computer Science / Python / AI Basics",
+                    badge: "AI",
+                    description: "Programming fundamentals and an introduction to AI — directly informed by my M.S. AI work at UT Austin.",
+                    details: "Python from scratch, data structures, algorithms, and a real introduction to machine learning concepts. Strong fit for students considering computer science or AI tracks in college."
                 },
                 {
-                    name: "Program and Career Guidance",
-                    description: "Navigate academic programs and career choices effectively through 1-on-1 counseling.",
-                    details: "This course offers personalized guidance to help students choose academic programs that align with their interests and career aspirations. Includes career assessments, application support, and workshops with industry professionals, all delivered in a 1-on-1 setting."
+                    name: "Academic Research & Writing",
+                    badge: "WRITING",
+                    description: "Thesis writing, citation, argumentation, and academic English for international curriculum students.",
+                    details: "Structure and style of academic papers — thesis development, argumentation, citation methods (APA, IEEE), and academic English. Useful for IB Extended Essay, A-Level coursework, and university-level writing."
                 }
-            ]
+            ],
+            cta: "Inquire about programs",
+            close: "Close"
         },
         zh: {
-            title: "我的课程",
-            courses: [
+            sectionLabel: "学生 / 家长咨询",
+            title: "项目与一对一辅导",
+            intro: "面向就读国际课程、目标欧美顶尖大学的学生。所有项目都以一对一或小班定制化形式进行。",
+            programs: [
                 {
-                    name: "A-Level 数学",
-                    description: "在个性化的1对1环境中探索包括微积分和代数在内的高级数学概念。",
-                    details: "本课程涵盖微积分、代数和几何的高级主题，重点介绍问题解决技术及其现实应用。以1对1的形式提供，以适应个别学习需求。"
+                    name: "中学生科研项目导师",
+                    badge: "招牌项目",
+                    description: "从选题、文献阅读、研究方法到论文写作的完整科研闭环，成果可直接用于美高 / 美本申请。",
+                    details: "我在杰尼教育主导设计的「四对一」模式（科研导师 + 文献导读 + 学术写作 + 写作辅导）现以个性化形式提供，时长 6-12 个月。过往学生科研成果被多所美英顶尖高校录取材料采用。"
                 },
                 {
-                    name: "A-Level 计算机科学",
-                    description: "通过个性化的1对1课程学习编程基础和计算思维。",
-                    details: "本课程教授计算机科学的基础知识，包括Python编程、数据结构和计算思维。所有课程都是1对1的，确保个性化关注和教学。"
+                    name: "美高 / 美本升学指导",
+                    badge: "升学",
+                    description: "课程选择、GPA 策略、课外活动规划、申请材料 —— 基于真实的美国研究生院经验。",
+                    details: "结合我自己在 Purdue 与 UT Austin 的求学经历，以及 10+ 年指导国际课程学生的实战经验，提供选课规划、GPA 策略、美/英本科申请文书、面试准备。"
                 },
                 {
-                    name: "A-Level 物理",
-                    description: "通过1对1的指导，了解物理学的基本原理及其应用。",
-                    details: "本课程涵盖力学、电磁学、热力学和现代物理概念，并包括实践应用和实验。以1对1课程提供以进行专注学习。"
+                    name: "A-Level / IGCSE / AP 物理",
+                    badge: "理科",
+                    description: "建立在真实科研背景上的物理教学，不只是考试技巧。Cambridge CAIE 9702 认证。",
+                    details: "覆盖力学、电磁学、热力学、现代物理。结合我在 Purdue 的材料工程与物理方向研究背景。注重概念深度而非死记硬背。"
                 },
                 {
-                    name: "Python 编程",
-                    description: "以个性化的1对1形式提供的Python编程入门课程。",
-                    details: "学习Python编程的基础知识，涵盖语法、变量、循环、函数和数据结构。适合初学者，并通过1对1课程提供以个性化学习。"
+                    name: "A-Level / IGCSE / AP 数学",
+                    badge: "理科",
+                    description: "纯数与高数（含微积分），先建直觉再讲方法。",
+                    details: "微积分、代数、几何、统计，强调问题解决与现实应用。一对一形式精准诊断与补足每个学生的薄弱点。"
                 },
                 {
-                    name: "论文写作",
-                    description: "在1对1专家指导下培养撰写学术研究论文的能力。",
-                    details: "本课程专注于学术研究论文的结构、风格和组成部分，包括论题开发、论证和引用方法。个性化的1对1课程提供针对性教学。"
+                    name: "计算机 / Python / AI 入门",
+                    badge: "AI",
+                    description: "编程基础与 AI 入门 —— 来自我在 UT Austin 的 AI 硕士实战训练。",
+                    details: "Python 从零开始、数据结构、算法、机器学习核心概念入门。适合考虑大学攻读计算机或 AI 方向的学生。"
                 },
                 {
-                    name: "项目和职业指导",
-                    description: "通过1对1咨询有效导航学术项目和职业选择。",
-                    details: "本课程提供个性化指导，帮助学生选择符合他们兴趣和职业目标的学术项目。包括职业评估、申请支持和与行业专业人士的研讨会，均在1对1环境中进行。"
+                    name: "学术研究与论文写作",
+                    badge: "写作",
+                    description: "论文撰写、引用格式、论证逻辑、学术英语 —— 专为国际课程学生设计。",
+                    details: "学术论文的结构与风格、论题开发、论证方法、引用格式（APA, IEEE）与学术英语。适合 IB Extended Essay、A-Level 课程作业以及大学阶段论文写作。"
                 }
-            ]
+            ],
+            cta: "咨询项目详情",
+            close: "关闭"
         }
     };
 
-    const handleShowModal = (course) => {
-        setSelectedCourse(course);
+    const c = content[language];
+
+    const handleShow = (program) => {
+        setSelected(program);
         setShowModal(true);
     };
 
     return (
-        <section id="courses" className="py-5 bg-light">
+        <section id="programs" className="programs-section">
             <div className="container">
-                <h2 className="text-center mb-4">{content[language].title}</h2>
-                <div className="row">
-                    {content[language].courses.map((course, index) => (
-                        <div className="col-md-4 mb-3" key={index}>
-                            <div className="card h-100">
-                                <div className="card-body">
-                                    <h5 className="card-title">{course.name}</h5>
-                                    <p className="card-text">{course.description}</p>
-                                    <Button variant="primary" onClick={() => handleShowModal(course)}>
-                                        {language === 'en' ? 'Learn More' : '了解更多'}
-                                    </Button>
-                                </div>
-                            </div>
+                <div className="programs-header">
+                    <div className="programs-label">{c.sectionLabel}</div>
+                    <h2 className="programs-title">{c.title}</h2>
+                    <p className="programs-intro">{c.intro}</p>
+                </div>
+
+                <div className="programs-grid">
+                    {c.programs.map((p, i) => (
+                        <div className="program-card" key={i}>
+                            <div className="program-badge">{p.badge}</div>
+                            <h3 className="program-name">{p.name}</h3>
+                            <p className="program-desc">{p.description}</p>
+                            <button className="program-link" onClick={() => handleShow(p)}>
+                                {language === 'en' ? 'Learn more →' : '了解更多 →'}
+                            </button>
                         </div>
                     ))}
                 </div>
             </div>
 
-            {/* Modal for course details */}
-            <Modal show={showModal} onHide={() => setShowModal(false)}>
+            <Modal show={showModal} onHide={() => setShowModal(false)} centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>{selectedCourse && selectedCourse.name}</Modal.Title>
+                    <Modal.Title>{selected && selected.name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {selectedCourse && selectedCourse.details}
+                    {selected && selected.details}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setShowModal(false)}>
-                        {language === 'en' ? 'Close' : '关闭'}
+                        {c.close}
                     </Button>
-                    <Button variant="primary" onClick={() => alert("Enroll or contact logic here")}>
-                        {language === 'en' ? 'Enroll Now' : '立即报名'}
+                    <Button variant="primary" href="#contact" onClick={() => setShowModal(false)}>
+                        {c.cta}
                     </Button>
                 </Modal.Footer>
             </Modal>

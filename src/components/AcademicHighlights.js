@@ -6,131 +6,109 @@ function AcademicHighlights() {
 
     const content = {
         en: {
-            title: "Student Achievements",
-            testimonials: [
-                {
-                    author: "Michael Zhou",
-                    courses: "A-Level Math (A), Physics (A), Academic Paper (High Distinction)",
-                    university: "University of Melbourne"
-                },
-                {
-                    author: "Carlos Wang",
-                    courses: "A-Level Math (A*), ACT 35",
-                    university: "University of Sydney"
-                },
-                {
-                    author: "Natalia Du",
-                    courses: "A-Level Math (A*)",
-                    university: "Kyoto University"
-                },
-                {
-                    author: "Rachel Zhang",
-                    courses: "A-Level Math (A*), Further Math (A*)",
-                    university: "University of Warwick"
-                },
-                {
-                    author: "Cindy Chen",
-                    courses: "A-Level Math (A)",
-                    university: "Currently in high school"
-                },
-                {
-                    author: "Marshall Ye",
-                    courses: "Coding/Python/Algorithm",
-                    university: "Currently in high school"
-                }
-            ]
+            sectionLabel: "STUDENT OUTCOMES",
+            title: "Where my students go",
+            intro: "A selection of past students I've worked with — across A-Level, AP, research projects, and college admissions.",
+            students: [
+                { author: "Michael Z.",   courses: "A-Level Math (A), Physics (A), Research Paper (High Distinction)", university: "University of Melbourne" },
+                { author: "Carlos W.",    courses: "A-Level Math (A*), ACT 35", university: "University of Sydney" },
+                { author: "Natalia D.",   courses: "A-Level Math (A*)", university: "Kyoto University" },
+                { author: "Rachel Z.",    courses: "A-Level Math (A*), Further Math (A*)", university: "University of Warwick" },
+                { author: "Cindy C.",     courses: "A-Level Math (A)", university: "High school (in progress)" },
+                { author: "Marshall Y.",  courses: "Python / Algorithms", university: "High school (in progress)" }
+            ],
+            seeMore: "Shuffle examples"
         },
         zh: {
-            title: "学生成就",
-            testimonials: [
-                {
-                    author: "Michael Zhou",
-                    courses: "A-Level 数学 (A), 物理 (A), 学术论文 (优秀)",
-                    university: "墨尔本大学"
-                },
-                {
-                    author: "Carlos Wang",
-                    courses: "A-Level 数学 (A*), ACT 35",
-                    university: "悉尼大学"
-                },
-                {
-                    author: "Natalia Du",
-                    courses: "A-Level 数学 (A*)",
-                    university: "京都大学"
-                },
-                {
-                    author: "Rachel Zhang",
-                    courses: "A-Level 数学 (A*), 高数 (A*)",
-                    university: "华威大学"
-                },
-                {
-                    author: "Cindy Chen",
-                    courses: "A-Level 数学 (A)",
-                    university: "高中在读"
-                },
-                {
-                    author: "Marshall Ye",
-                    courses: "编程/Python/算法",
-                    university: "高中在读"
-                }
-            ]
+            sectionLabel: "学生成果",
+            title: "学生升学去向",
+            intro: "部分指导过的学生 —— 涵盖 A-Level、AP、科研项目与升学申请。",
+            students: [
+                { author: "周同学 M.Z.",  courses: "A-Level 数学 (A), 物理 (A), 学术论文 (优秀)", university: "墨尔本大学" },
+                { author: "王同学 C.W.",  courses: "A-Level 数学 (A*), ACT 35", university: "悉尼大学" },
+                { author: "杜同学 N.D.",  courses: "A-Level 数学 (A*)", university: "京都大学" },
+                { author: "张同学 R.Z.",  courses: "A-Level 数学 (A*), 高数 (A*)", university: "华威大学" },
+                { author: "陈同学 C.C.",  courses: "A-Level 数学 (A)", university: "高中在读" },
+                { author: "叶同学 M.Y.",  courses: "Python / 算法", university: "高中在读" }
+            ],
+            seeMore: "换一组学生"
         }
     };
 
-    const [displayedTestimonials, setDisplayedTestimonials] = useState(() => {
-        const initialTestimonials = [];
-        const allTestimonials = content[language].testimonials;
-        const totalToShow = window.innerWidth < 768 ? 3 : 4; // Show 3 on mobile, 4 on desktop
+    const c = content[language];
 
-        while (initialTestimonials.length < totalToShow) {
-            const randomIndex = Math.floor(Math.random() * allTestimonials.length);
-            const testimonial = allTestimonials[randomIndex];
-            if (!initialTestimonials.includes(testimonial)) {
-                initialTestimonials.push(testimonial);
-            }
+    const pick = () => {
+        const total = window.innerWidth < 768 ? 3 : 4;
+        const pool = [...c.students];
+        const picked = [];
+        while (picked.length < total && pool.length) {
+            const idx = Math.floor(Math.random() * pool.length);
+            picked.push(pool.splice(idx, 1)[0]);
         }
-        return initialTestimonials;
-    });
-
-    const generateRandomTestimonials = () => {
-        const randomTestimonials = [];
-        const allTestimonials = content[language].testimonials;
-        const totalToShow = window.innerWidth < 768 ? 3 : 4; // Show 3 on mobile, 4 on desktop
-
-        while (randomTestimonials.length < totalToShow) {
-            const randomIndex = Math.floor(Math.random() * allTestimonials.length);
-            const testimonial = allTestimonials[randomIndex];
-            if (!randomTestimonials.includes(testimonial)) {
-                randomTestimonials.push(testimonial);
-            }
-        }
-        setDisplayedTestimonials(randomTestimonials);
+        return picked;
     };
+
+    const [displayed, setDisplayed] = useState(pick);
 
     return (
-        <section id="academic-highlights" className="py-5">
+        <section id="academic-highlights" style={{ padding: '90px 0', background: '#fff' }}>
             <div className="container">
-                <h2 className="text-center mb-4">{content[language].title}</h2>
-                <div className="row">
-                    {displayedTestimonials.map((testimonial, index) => (
-                        <div className="col-md-6 mb-3" key={index}>
-                            <div className="card h-100">
-                                <div className="card-body">
-                                    <blockquote className="blockquote mb-0">
-                                        <footer className="blockquote-footer">
-                                            <strong>{testimonial.author}</strong> <br />
-                                            <span>Courses: {testimonial.courses}</span> <br />
-                                            <cite title="University">University: {testimonial.university}</cite>
-                                        </footer>
-                                    </blockquote>
-                                </div>
+                <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 48px' }}>
+                    <div style={{
+                        fontSize: '0.85rem', letterSpacing: '3px', fontWeight: 700,
+                        color: '#1F3A5F', marginBottom: 14, textTransform: 'uppercase'
+                    }}>{c.sectionLabel}</div>
+                    <h2 style={{
+                        fontSize: '2.2rem', fontWeight: 800, color: '#1A1A1A',
+                        marginBottom: 18, letterSpacing: '-0.5px'
+                    }}>{c.title}</h2>
+                    <p style={{ fontSize: '1.05rem', color: '#555', lineHeight: 1.7 }}>{c.intro}</p>
+                </div>
+
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                    gap: 20
+                }}>
+                    {displayed.map((s, i) => (
+                        <div key={i} style={{
+                            background: '#FAFBFC', borderLeft: '4px solid #1F3A5F',
+                            padding: '24px 22px', borderRadius: '0 8px 8px 0',
+                            transition: 'all 0.25s'
+                        }}>
+                            <div style={{
+                                fontSize: '1rem', fontWeight: 700,
+                                color: '#1A1A1A', marginBottom: 8
+                            }}>
+                                {s.author}
+                            </div>
+                            <div style={{
+                                fontSize: '0.85rem', color: '#555',
+                                marginBottom: 10, lineHeight: 1.5
+                            }}>
+                                {s.courses}
+                            </div>
+                            <div style={{
+                                fontSize: '0.9rem', color: '#1F3A5F',
+                                fontWeight: 600
+                            }}>
+                                → {s.university}
                             </div>
                         </div>
                     ))}
                 </div>
-                <div className="text-center">
-                    <button className="btn btn-primary" onClick={generateRandomTestimonials}>
-                        {language === 'en' ? 'See More Students' : '看其他学生'}
+
+                <div style={{ textAlign: 'center', marginTop: 32 }}>
+                    <button
+                        onClick={() => setDisplayed(pick())}
+                        style={{
+                            background: 'transparent', border: '1.5px solid #1F3A5F',
+                            color: '#1F3A5F', fontWeight: 600,
+                            padding: '10px 22px', borderRadius: 6, fontSize: '0.95rem',
+                            transition: 'all 0.2s'
+                        }}
+                    >
+                        {c.seeMore}
                     </button>
                 </div>
             </div>

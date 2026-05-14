@@ -1,8 +1,10 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import Navbar from './components/NavBar';
+import Hero from './components/Hero';
+import Services from './components/Services';
 import About from './components/About';
 import Courses from './components/Courses';
-import Testimonials from './components/AcademicHighlights';
+import AcademicHighlights from './components/AcademicHighlights';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -28,10 +30,12 @@ function App() {
     <LanguageContext.Provider value={{ language, toggleLanguage }}>
       <div className="App">
         <Navbar />
-        <main className="container mt-4">
+        <main>
+          <Hero />
+          <Services />
           <About />
           <Courses />
-          <Testimonials />
+          <AcademicHighlights />
           <Contact />
         </main>
         <Footer />
